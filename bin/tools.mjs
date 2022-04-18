@@ -16,7 +16,7 @@ const __dirname = dirname(__filename)
  * @returns lint
  */
 export function getNeedLint() {
-  const lastLint = getCache('lint')
+  const lastLint = getCache('lint') || 'true'
   const lintList = [
     true,
     false
@@ -50,7 +50,7 @@ export function getGitRemote() {
   // 获取所有可用 remote
   const configPath = path.resolve(__dirname, '../../../.git/config')
   if (!fs.existsSync(configPath)) {
-    return ''
+    return 'origin'
   }
   const config = fs.readFileSync(configPath, 'utf-8')
   const configInfo = ini.parse(config)
