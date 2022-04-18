@@ -230,21 +230,6 @@ export function ignoreAddCommitCache() {
   const res = execa.commandSync('git rev-parse --abbrev-ref HEAD');
   return res.stdout;
 }
-// export function getGitBranch() {
-//   let branch
-//   const configPath = path.resolve(__dirname, '../../../.git/config')
-//   if (!fs.existsSync(configPath)) {
-//     return null
-//   }
-//   const config = fs.readFileSync(configPath, 'utf-8')
-//   const configInfo = ini.parse(config)
-//   Object.keys(configInfo).forEach((key) => {
-//     if (key.startsWith('branch ')) {
-//       branch = key.split('"')[1]
-//     }
-//   })
-//   return branch
-// }
 
 /**
  * 根据 key 获取本地缓存信息
