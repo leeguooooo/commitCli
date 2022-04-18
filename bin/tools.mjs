@@ -6,6 +6,7 @@ import ini from 'ini'
 import inquirer from 'inquirer'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import execa from 'execa'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -49,7 +50,7 @@ export function getGitRemote() {
   // 获取所有可用 remote
   const configPath = path.resolve(__dirname, '../../../.git/config')
   if (!fs.existsSync(configPath)) {
-    return null
+    return ''
   }
   const config = fs.readFileSync(configPath, 'utf-8')
   const configInfo = ini.parse(config)
@@ -225,21 +226,25 @@ export function ignoreAddCommitCache() {
  * 获取当前分支
  * @returns branchName 当前分支名称
  */
-export function getGitBranch() {
-  let branch
-  const configPath = path.resolve(__dirname, '../../../.git/config')
-  if (!fs.existsSync(configPath)) {
-    return null
-  }
-  const config = fs.readFileSync(configPath, 'utf-8')
-  const configInfo = ini.parse(config)
-  Object.keys(configInfo).forEach((key) => {
-    if (key.startsWith('branch ')) {
-      branch = key.split('"')[1]
-    }
-  })
-  return branch
+ export function getGitBranch() {
+  const res = execa.commandSync('git rev-parse --abbrev-ref HEAD');
+  return res.stdout;
 }
+// export function getGitBranch() {
+//   let branch
+//   const configPath = path.resolve(__dirname, '../../../.git/config')
+//   if (!fs.existsSync(configPath)) {
+//     return null
+//   }
+//   const config = fs.readFileSync(configPath, 'utf-8')
+//   const configInfo = ini.parse(config)
+//   Object.keys(configInfo).forEach((key) => {
+//     if (key.startsWith('branch ')) {
+//       branch = key.split('"')[1]
+//     }
+//   })
+//   return branch
+// }
 
 /**
  * 根据 key 获取本地缓存信息
