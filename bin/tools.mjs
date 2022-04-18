@@ -14,11 +14,11 @@ const __dirname = dirname(__filename)
  *
  * @returns lint
  */
-export function lint() {
+export function getNeedLint() {
   const lastLint = getCache('lint')
   const lintList = [
-    'yes',
-    'no'
+    true,
+    false
   ]
   return inquirer
   .prompt([

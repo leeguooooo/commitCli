@@ -3,7 +3,7 @@
 import chalk from 'chalk'
 import shell from 'shelljs'
 import {
-  getCommitMsg, getGitBranch, getGitRemote, getScope, getType
+  getCommitMsg, getGitBranch, getGitRemote, getScope, getType, getNeedLint
 } from './tools.mjs'
 
 
@@ -26,7 +26,10 @@ async function run() {
   // 获取 branch
   const branch = await getGitBranch()
 
-  {
+  // 是否 lint
+  const needLint = await getNeedLint()
+
+  if(needLint) {
     console.log(chalk.green(`开始： eslint`))
     const result = shell.exec('npm run lint:cache')
     if (result.code !== 0) {
