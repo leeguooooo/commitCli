@@ -29,7 +29,7 @@ async function run() {
   // 是否 lint
   const needLint = await getNeedLint()
 
-  if(needLint) {
+  if(needLint === 'yes') {
     console.log(chalk.green(`开始： eslint`))
     const result = shell.exec('npm run lint:cache')
     if (result.code !== 0) {
