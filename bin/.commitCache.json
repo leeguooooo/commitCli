@@ -1,5 +1,5 @@
 {
-  "commitType": 9,
-  "commitMsg": "删除注释",
+  "commitType": 7,
+  "commitMsg": "使用 shelljs",
   "lint": 1
 }

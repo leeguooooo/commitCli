@@ -5,8 +5,8 @@ import fs from 'fs'
 import ini from 'ini'
 import inquirer from 'inquirer'
 import path, { dirname } from 'path'
+import shell from 'shelljs'
 import { fileURLToPath } from 'url'
-import execa from 'execa'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -227,7 +227,7 @@ export function ignoreAddCommitCache() {
  * @returns branchName 当前分支名称
  */
  export function getGitBranch() {
-  const res = execa.commandSync('git rev-parse --abbrev-ref HEAD');
+  const res = shell.exec('git rev-parse --abbrev-ref HEAD');
   return res.stdout;
 }
 
