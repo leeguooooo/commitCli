@@ -49,8 +49,6 @@ export function getGitRemote() {
   const lastRemote = getCache('remote')
   // 获取所有可用 remote
   const configPath = path.resolve(__dirname, '../../../.git/config')
-  console.log(configPath)
-  console.log(chalk.green(`从 ${configPath.toString()} 获取所有可用 remote`))
   if (!fs.existsSync(configPath)) {
     return 'origin'
   }

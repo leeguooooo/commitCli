@@ -1,5 +1,5 @@
 {
-  "commitType": 7,
-  "commitMsg": "git 路径",
-  "lint": 1
+  "commitType": 4,
+  "commitMsg": "删除无用输出",
+  "lint": 0
 }
