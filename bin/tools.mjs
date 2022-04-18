@@ -16,10 +16,10 @@ const __dirname = dirname(__filename)
  * @returns lint
  */
 export function getNeedLint() {
-  const lastLint = getCache('lint') || 'true'
+  const lastLint = getCache('lint') || 'yes'
   const lintList = [
-    true,
-    false
+    'yes',
+    'no'
   ]
   return inquirer
   .prompt([
