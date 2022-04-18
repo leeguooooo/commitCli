@@ -1,5 +1,5 @@
 {
-  "commitType": 0,
-  "commitMsg": "是否 lint 选项",
+  "commitType": 2,
+  "commitMsg": "version",
   "lint": 0
 }
