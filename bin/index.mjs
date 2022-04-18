@@ -1,15 +1,11 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk'
-import path, { dirname } from 'path'
 import shell from 'shelljs'
-import { fileURLToPath } from 'url'
 import {
   getCommitMsg, getGitBranch, getGitRemote, getScope, getType, ignoreAddCommitCache
 } from './tools.mjs'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
 
 if (!shell.which('git')) {
@@ -18,7 +14,7 @@ if (!shell.which('git')) {
 }
 
 async function run() {
-  const ignoreMap = ignoreAddCommitCache()
+  // ignoreAddCommitCache()
 
   // 本次提交类型
   const type = await getType()
@@ -33,9 +29,7 @@ async function run() {
   const branch = await getGitBranch()
 
   {
-    const eslintBinPath = path.resolve(__dirname, '../../node_modules/.bin/eslint')
-    let validPath = 'src'
-    console.log(`开始： eslint`)
+    console.log(chalk.green(`开始： eslint`))
     const result = shell.exec('npm run lint:cache')
     if (result.code !== 0) {
       console.log(result.stderr)

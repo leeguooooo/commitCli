@@ -1,16 +1,14 @@
 {
   "name": "leeguoo-commit-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:cache": "eslint bin --cache --fix --ext .js,.jsx,.ts,.tsx"
+    "lint:cache": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx"
   },
   "bin": {
     "commit": "./bin/index.mjs",
-    "c": "./bin/index.mjs",
-    "test": "./bin/cli.js",
-    "aaa": "./bin/cli.js"
+    "c": "./bin/index.mjs"
   },
   "repository": {
     "type": "git",

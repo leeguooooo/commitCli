@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import inquirer from 'inquirer'
-import fs from 'fs'
-import { fileURLToPath } from 'url'
-import path, { dirname } from 'path'
-import ini from 'ini'
 import chalk from 'chalk'
+import fs from 'fs'
+import ini from 'ini'
+import inquirer from 'inquirer'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -17,7 +17,7 @@ const __dirname = dirname(__filename)
 export function getGitRemote() {
   const lastRemote = getCache('remote')
   // 获取所有可用 remote
-  const configPath = path.resolve(__dirname, '../../.git/config')
+  const configPath = path.resolve(__dirname, '.git/config')
   if (!fs.existsSync(configPath)) {
     return null
   }
@@ -109,7 +109,7 @@ export function getScope() {
         name: 'scope',
         message:
           'commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同(可具体到某个文件), 可直接回车为空: ',
-        validate(text) {
+        validate() {
           return true
         },
       },
@@ -157,7 +157,7 @@ export function getCommitMsg() {
  * 添加缓存信息文件到 gitignore
  */
 export function ignoreAddCommitCache() {
-  const gitignorePath = path.join(__dirname, '../../.gitignore')
+  const gitignorePath = path.join(__dirname, '.gitignore')
   let gitignoreObj
   try {
     const gitignore = fs.readFileSync(gitignorePath, 'utf8')
@@ -197,7 +197,7 @@ export function ignoreAddCommitCache() {
  */
 export function getGitBranch() {
   let branch
-  const configPath = path.resolve(__dirname, '../../.git/config')
+  const configPath = path.resolve(__dirname, '.git/config')
   if (!fs.existsSync(configPath)) {
     return null
   }
