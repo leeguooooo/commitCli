@@ -13,6 +13,7 @@ yarn add `leeguoo-commit-cli`
 ```
 {
   "start":{
+    "c": "c",
     "lint:cache": "eslint src --cache --fix --ext .ts,.tsx"
   }
 }
