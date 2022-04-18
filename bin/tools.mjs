@@ -48,7 +48,7 @@ export function getNeedLint() {
 export function getGitRemote() {
   const lastRemote = getCache('remote')
   // 获取所有可用 remote
-  const configPath = path.resolve(__dirname, '../../../.git/config')
+  const configPath = path.resolve(__dirname, '../../.git/config')
   if (!fs.existsSync(configPath)) {
     return 'origin'
   }
