@@ -1,0 +1,37 @@
+{
+  "name": "leeguoo-commit-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:cache": "eslint bin --cache --fix --ext .js,.jsx,.ts,.tsx"
+  },
+  "bin": {
+    "commit": "./bin/index.mjs",
+    "c": "./bin/index.mjs",
+    "test": "./bin/cli.js",
+    "aaa": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeguooooo/commitCli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leeguooooo/commitCli/issues"
+  },
+  "homepage": "https://github.com/leeguooooo/commitCli#readme",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "ini": "^3.0.0",
+    "inquirer": "^8.2.2",
+    "shelljs": "^0.8.5"
+  }
+}
