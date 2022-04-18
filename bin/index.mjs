@@ -3,7 +3,7 @@
 import chalk from 'chalk'
 import shell from 'shelljs'
 import {
-  getCommitMsg, getGitBranch, getGitRemote, getScope, getType, ignoreAddCommitCache
+  getCommitMsg, getGitBranch, getGitRemote, getScope, getType
 } from './tools.mjs'
 
 
@@ -14,8 +14,6 @@ if (!shell.which('git')) {
 }
 
 async function run() {
-  // ignoreAddCommitCache()
-
   // 本次提交类型
   const type = await getType()
   // 受影响范围

@@ -11,6 +11,36 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 /**
+ *
+ * @returns lint
+ */
+export function lint() {
+  const lastLint = getCache('lint')
+  const lintList = [
+    'yes',
+    'no'
+  ]
+  return inquirer
+  .prompt([
+    {
+      type: 'list',
+      name: 'lint',
+      message: '是否需要 lint ? ：',
+      choices: lintList,
+      pageSize: lintList.length,
+      default: lintList.indexOf(lastLint),
+    },
+  ])
+  .then((answer) => {
+    setCache('lint', lintList.indexOf(answer.lint))
+    return answer.lint
+  })
+  .catch((ex) => {
+    console.log(ex)
+  })
+}
+
+/**
  * 选择 remote 仓库，会记录到缓存文件中。
  * @returns
  */
@@ -197,7 +227,7 @@ export function ignoreAddCommitCache() {
  */
 export function getGitBranch() {
   let branch
-  const configPath = path.resolve(__dirname, '.git/config')
+  const configPath = path.resolve(__dirname, '../../../.git/config')
   if (!fs.existsSync(configPath)) {
     return null
   }
